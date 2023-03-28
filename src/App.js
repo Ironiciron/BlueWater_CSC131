@@ -13,10 +13,6 @@ import BavariaIcon from "./images/Bavaria.jpg";
 
 function App() {
   
-  // const [open, setOpen] = useState(false);
-  // const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
-
   return (
     <div style={{ height: "100vh" }} className="App">
       <AppBar position="static">
