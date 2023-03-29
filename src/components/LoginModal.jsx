@@ -1,27 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Stack, TextField, Typography } from '@mui/material';
-
-// const data = [
-//   { id: 1, name: 'FDA' },
-//   { id: 2, name: 'Jane Hopkins' },
-//   { id: 3, name: 'Bavaria' },
-// ];
+import { 
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from 'firebase/auth';
+import { auth } from "../firebase-config";
 
 const LoginModal = (props) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  // const handleEmailChange = (event) => {
+  //   setEmail(event.target.value);
+  // };
+
+  // const handlePasswordChange = (event) => {
+  //   setPassword(event.target.value);
+  // };
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   // perform login logic here
+  // };
+
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+    });
+
+  }, []);
+
+  const register = async () => {
+    try {
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      );
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+  const login = async () => {
+    try {
+      const user = await signInWithEmailAndPassword(
+        auth,
+        loginEmail,
+        loginPassword
+      );
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // perform login logic here
+  const logout = async () => {
+    await signOut(auth);
   };
 
   return (
@@ -29,21 +74,61 @@ const LoginModal = (props) => {
       <Typography
         align = "center"
         sx = {{ color: "#fff" }}
-        variant = "h1"
+        variant = "h3"
       >
         {props.name}
       </Typography>
-      <Typography
+      {/* <Typography
         align = "center"
         sx = {{ color: "#fff"}}
         variant = "h2"
       >
         Login
-      </Typography>
+      </Typography> */}
       <Stack
         spacing = {4}
       >
-        <TextField
+        <div>
+        <h3> Register User </h3>
+        <input
+          placeholder="Email..."
+          onChange={(event) => {
+            setRegisterEmail(event.target.value);
+          }}
+        />
+        <input
+          placeholder="Password..."
+          onChange={(event) => {
+            setRegisterPassword(event.target.value);
+          }}
+        />
+
+        <button onClick={register}> Create User</button>
+      </div>
+
+      <div>
+        <h3> Login </h3>
+        <input
+          placeholder="Email..."
+          onChange={(event) => {
+            setLoginEmail(event.target.value);
+          }}
+        />
+        <input
+          placeholder="Password..."
+          onChange={(event) => {
+            setLoginPassword(event.target.value);
+          }}
+        />
+
+        <button onClick={login}> Login</button>
+      </div>
+
+      <h4> User Logged In: </h4>
+      {user ? user.email : "Not Logged In"}
+
+      <button onClick={logout}> Sign Out </button>
+        {/* <TextField
         sx={{
           input: {
             fontWeight: '500',
@@ -94,7 +179,7 @@ const LoginModal = (props) => {
           variant = "contained"
         >
           Register
-        </Button>
+        </Button> */}
       </Stack>
       
     </div>

@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Typography, Button, Modal } from '@mui/material';
 import LoginModal from "./LoginModal";
-import FDAIcon from "../images/fda-logo.jpeg";
-import JHIcon from "../images/JaneHopkins.jpg";
-import BavariaIcon from "../images/Bavaria.jpg";
 
 const OrganizationButtons = (props) => {
     const [open, setOpen] = useState(false);
