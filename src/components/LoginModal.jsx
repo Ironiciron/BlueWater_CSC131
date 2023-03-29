@@ -1,5 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Stack, TextField, Typography } from '@mui/material';
+import React, { useState, useEffect } from "react";
+import {
+  Stack,
+  Typography,
+  IconButton,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import { 
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -9,35 +14,36 @@ import {
 import { auth } from "../firebase-config";
 
 const LoginModal = (props) => {
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
 
-  // const handleEmailChange = (event) => {
-  //   setEmail(event.target.value);
-  // };
+//   const handleEmailChange = (event) => {
+//     setEmail(event.target.value);
+//   };
 
-  // const handlePasswordChange = (event) => {
-  //   setPassword(event.target.value);
-  // };
+//   const handlePasswordChange = (event) => {
+//     setPassword(event.target.value);
+//   };
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   // perform login logic here
-  // };
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     // perform login logic here
+//   };
 
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
+const [registerEmail, setRegisterEmail] = useState("");
+const [registerPassword, setRegisterPassword] = useState("");
+const [loginEmail, setLoginEmail] = useState("");
+const [loginPassword, setLoginPassword] = useState("");
 
-  const [user, setUser] = useState({});
+const [user, setUser] = useState({});
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-    });
+useEffect(() => {
+  onAuthStateChanged(auth, (currentUser) => {
+  setUser(currentUser);
+  });
 
-  }, []);
+}, []);
+
 
   const register = async () => {
     try {
@@ -71,24 +77,26 @@ const LoginModal = (props) => {
 
   return (
     <div className="modal">
-      <Typography
-        align = "center"
-        sx = {{ color: "#fff" }}
-        variant = "h3"
+      <IconButton
+        edge="end"
+        color="inherit"
+        aria-label="close"
+        onClick={() => {
+          props.onClose();
+        }}
+        sx={{ position: "absolute", top: "10px", right: "10px", color: "#fff" }}
       >
+        <CloseIcon />
+      </IconButton>
+      <Typography align="center" sx={{ color: "#fff" }} variant="h3">
         {props.name}
       </Typography>
-      {/* <Typography
-        align = "center"
-        sx = {{ color: "#fff"}}
-        variant = "h2"
-      >
+      {/* <Typography align="center" sx={{ color: "#fff" }} variant="h2">
         Login
       </Typography> */}
-      <Stack
-        spacing = {4}
-      >
-        <div>
+      <Stack spacing={4}>
+
+      <div>
         <h3> Register User </h3>
         <input
           placeholder="Email..."
@@ -129,32 +137,32 @@ const LoginModal = (props) => {
 
       <button onClick={logout}> Sign Out </button>
         {/* <TextField
-        sx={{
-          input: {
-            fontWeight: '500',
-            border: 'none',
-            borderRadius: '4px'
-          },
-          width: '400px',
-          backgroundColor: '#fff',
-          borderRadius: '40px'
-        }}
-        height="76px"
-        //value={search}
-        //onChange={(e) => setSearch(e.target.value.toLowerCase())}
-        placeholder="E-mail Address"
-        type="text"
+          sx={{
+            input: {
+              fontWeight: "500",
+              border: "none",
+              borderRadius: "4px",
+            },
+            width: "400px",
+            backgroundColor: "#fff",
+            borderRadius: "40px",
+          }}
+          height="76px"
+          //value={search}
+          //onChange={(e) => setSearch(e.target.value.toLowerCase())}
+          placeholder="E-mail Address"
+          type="text"
         />
         <TextField
           sx={{
             input: {
-              fontWeight: '500',
-              border: 'none',
-              borderRadius: '4px'
+              fontWeight: "500",
+              border: "none",
+              borderRadius: "4px",
             },
-            width: '400px',
-            backgroundColor: '#fff',
-            borderRadius: '40px'
+            width: "400px",
+            backgroundColor: "#fff",
+            borderRadius: "40px",
           }}
           height="76px"
           //value={search}
@@ -163,37 +171,38 @@ const LoginModal = (props) => {
           type="text"
         />
         <Button
-          sx = {{
+          sx={{
             bgcolor: "#004000",
-            width: "100px"
+            width: "100px",
           }}
-          variant = "contained"
+          variant="contained"
         >
           Submit
         </Button>
         <Button
-          sx = {{ 
+          sx={{
             bgcolor: "#004000",
-            width: "100px"
+            width: "100px",
           }}
-          variant = "contained"
+          variant="contained"
         >
           Register
         </Button> */}
       </Stack>
-      
     </div>
   );
 };
 
 export default LoginModal;
 
-      {/* <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email:</label>
-        <input type="email" id="email" value={email} onChange={handleEmailChange} />
+// {
+//   /* <form onSubmit={handleSubmit}>
+//         <label htmlFor="email">Email:</label>
+//         <input type="email" id="email" value={email} onChange={handleEmailChange} />
 
-        <label htmlFor="password">Password:</label>
-        <input type="password" id="password" value={password} onChange={handlePasswordChange} />
+//         <label htmlFor="password">Password:</label>
+//         <input type="password" id="password" value={password} onChange={handlePasswordChange} />
 
-        <button type="submit">Login</button>
-      </form> */}
+//         <button type="submit">Login</button>
+//       </form> */
+// }
