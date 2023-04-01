@@ -10,14 +10,15 @@ const OrganizationButtons = (props) => {
   };
 
   return (
-    <div>
+    <div className="App">
       <Box>
-        <Typography sx={{ color: "#fff", bgcolor: "#1b76d2" }} variant="h4">
+        <Typography sx={{ fontFamily: "georgia" }} variant="h4">
           {props.name}
         </Typography>
+        {/* // bgcolor: "#1b76d2" */}
         <Button
-          sx={{ bgcolor: "#003987" }}
-          variant="contained"
+          sx={{ bgcolor: "#1b76d2" }}
+          variant="text"
           onClick={handleOpen}
         >
           <Modal open={open} onClose={handleClose}>

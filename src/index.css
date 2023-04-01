@@ -1,13 +1,147 @@
-body {
+/*
+* File name: index.css
+* Author: Kestine Tran
+* Date created: 02/15/2023
+* Links to: index.html, aboutUs.html, loginAdmin.html, loginFDA.html, loginHopkins.html
+*/
+
+body { 
+  font-family: "Georgia", "Times New Roman", Times, Serif;
+  background-color: #C3E0E5;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
 }
+
+.navbar {
+  width: 100%;                    /* how much of the page is taken up. */
+  background-color: #5885AF;
+  overflow: auto;                 /* when page is minimized, dimension resizing. */
+  border-bottom: 3px solid transparent;
+}
+
+.navbar a {
+  float: left;                    /* cells will adhere to left of page. */
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;                /* W3 standardized font size for desktop. */
+  width: 16%;                     /* currently four items, resize with amount present. */
+  text-align: center;             /* appears in center of each cell. */
+}
+
+.navbar a:hover {
+  background-color: #41729F;
+  border-bottom: 3px #F2DF3A;
+  transition-duration: 0.6s;
+}
+
+.navbar a.active {
+  background-color: #274472;
+  border-bottom: 3px #F2DF3A;
+}
+
+.navbar a.search {
+  background-color: #5885AF;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+      float: none;
+      display: block;
+      width: 100%;
+      text-align: left;
+  }
+}
+
+.header {
+  padding: 60px;
+  text-align: center;
+  background: #003B73;
+  color: white;
+  font-size: 30px;
+}
+
+.header2 {
+  padding: 10px;
+  text-align: center;
+  background: #003B73;
+  color: white;
+  font-size: 20px;
+}
+
+.content {
+  padding: 20px;
+  color: #003B73;
+  text-align: center;
+}
+
+.dropbtn {
+background-color: #5885AF;
+color: white;
+padding: 16px;
+font-size: 16px;
+border: none;
+}
+
+.dropdown {
+position: relative;
+display: inline-block;
+}
+
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f1f1f1;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  transition-duration: 0.6s;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #41729F;
+  transition-duration: 0.4s;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td, th {
+  border: 1px solid #003B73;
+  text-align: left;
+  padding: 8px;
+  background: white;
+}
+
+th {
+  background: #41729F;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+

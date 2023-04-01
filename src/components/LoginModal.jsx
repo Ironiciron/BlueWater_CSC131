@@ -88,7 +88,7 @@ useEffect(() => {
       >
         <CloseIcon />
       </IconButton>
-      <Typography align="center" sx={{ color: "#fff" }} variant="h3">
+      <Typography align="center" variant="h3" fontFamily={"Georgia"}>
         {props.name}
       </Typography>
       {/* <Typography align="center" sx={{ color: "#fff" }} variant="h2">

@@ -1,9 +1,10 @@
 // import logo from "./logo.svg";
 import "./App.css";
-import useJaneHopkins from "./hooks/useJaneHopkins";
+import "./index.css";
+//import useJaneHopkins from "./hooks/useJaneHopkins";
 import { AppBar, Toolbar, IconButton, Typography, Stack }
 from "@mui/material";
-import { useState } from "react";
+//import { useState } from "react";
 // import ListView from "./components/listView";
 // import GridView from "./components/gridView";
 import OrganizationButtons from "./components/OrganizationButtons";
@@ -23,7 +24,7 @@ function App() {
             aria-label="menu"
             sx={{ mr: 2 }}
           ></IconButton>
-          <Typography variant="h2" color="inherit" component="div">
+          <Typography variant="h2" color="inherit" component="div" fontFamily={"georgia"}>
             PharmaStudy
           </Typography>
           {/* <div style={{ position: "relative", top: "120px", right: "350px" }}>
@@ -35,7 +36,8 @@ function App() {
       </AppBar>
           <Typography
             sx = {{
-              pt: 10
+              pt: 10,
+              fontFamily: "georgia"
             }}
             align = "center"
             variant = "h4"
@@ -73,7 +75,7 @@ export default App;
   //   console.log(addPatientResponse);
   // };
 
-          {/* <Box>
+          /* <Box>
             <Typography
               sx={{ color: "#fff", bgcolor: "#1b76d2" }}
               variant = "h4"
@@ -167,14 +169,14 @@ export default App;
               <img src = {BavariaIcon} style = {{ width: "200px",
               height: "150px" }} />
             </Button>
-          </Box> */}
+          </Box> */
 
 
 //  BELOW IS ANISH'S CODE FOR LIST AND GRID VIEW.
 //  COMMENTED OUT TO WORK ON LOGIN COMPONENTS.
 //    - NICHOLAS
 
-      {/* <Typography
+      /* <Typography
         component="h5"
         variant="h3"
         align="center"
@@ -241,7 +243,7 @@ export default App;
     </div>    // <-- THIS WAS PREVIOUS CLOSING TAG FOR STARTING
               // DIV AT TOP OF RETURN
   );          // <-- PREVIOUS CLOSING PARENTHESES FOR RETURN
-} */}         // <-- PREVIOUS CLOSING CURLY BRACKET
+} */         // <-- PREVIOUS CLOSING CURLY BRACKET
 
-{/* //<Button variant="contained" onClick={() => {setFormat("list")}}>List</Button>
-//<Button variant="contained" onClick={() => {setFormat("grid")}}>Grid</Button> */}
+/* //<Button variant="contained" onClick={() => {setFormat("list")}}>List</Button>
+//<Button variant="contained" onClick={() => {setFormat("grid")}}>Grid</Button> */
